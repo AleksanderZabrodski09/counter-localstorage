@@ -10,11 +10,16 @@ function App() {
   }
   const setLocalStorageHandler = () => {
     // localStorage.setItem('countValue',value.toString())
-    localStorage.setItem('countValue',JSON.stringify(value))
+    localStorage.setItem("countValue",JSON.stringify(value))
   }
 
   const getFromLocalStorageHandler = () => {
-    //code
+    let valueAsString = localStorage.getItem('countValue')
+    if(valueAsString){
+      let newValue = JSON.parse(valueAsString)
+      setValue(newValue)
+    }
+
   }
 
   return (
