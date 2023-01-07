@@ -19,7 +19,10 @@ function App() {
       let newValue = JSON.parse(valueAsString)
       setValue(newValue)
     }
-
+  }
+  const clearLocalStorageHandler = () => {
+    localStorage.clear()
+    setValue(0)
   }
 
   return (
@@ -28,6 +31,7 @@ function App() {
       <button onClick={onClickHandler}>inc</button>
       <button onClick={setLocalStorageHandler}>setLocalStorage</button>
       <button onClick={getFromLocalStorageHandler}>getFromLocalStorage</button>
+      <button onClick={clearLocalStorageHandler}>clearLocalStorage</button>
     </div>
   );
 }
