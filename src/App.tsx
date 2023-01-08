@@ -2,14 +2,18 @@ import React from 'react';
 import './App.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootReducerType} from './bll/store';
-import {insCounterAC} from './bll/counter-reducer';
+import { insCounterTC} from './bll/counter-reducer';
 
 function App() {
 
   const value=useSelector<AppRootReducerType, number>(state => state.counter.value)
   const dispatch = useDispatch()
+
+  // const onClickHandler = () => {
+  //   dispatch(insCounterTC())
+  // }
   const onClickHandler = () => {
-    dispatch(insCounterAC())
+    dispatch(insCounterTC(value))
   }
 
 
