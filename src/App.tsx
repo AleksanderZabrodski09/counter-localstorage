@@ -1,19 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppRootReducerType} from './bll/store';
-import { insCounterTC} from './bll/counter-reducer';
+import {useSelector} from 'react-redux';
+import {AppRootReducerType, useAppDispatch} from './bll/store';
+import {insCounterTC, setValueFromLocalStorageAC, setValueFromLocalStorageTC} from './bll/counter-reducer';
 
 function App() {
 
-  const value=useSelector<AppRootReducerType, number>(state => state.counter.value)
-  const dispatch = useDispatch()
+  const value = useSelector<AppRootReducerType, number>(state => state.counter.value)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(setValueFromLocalStorageTC())
+  }, [])
+
 
   // const onClickHandler = () => {
   //   dispatch(insCounterTC())
   // }
   const onClickHandler = () => {
-    dispatch(insCounterTC(value))
+    dispatch(insCounterTC(value + 1))
   }
 
 
