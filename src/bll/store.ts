@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, Dispatch, legacy_createStore} from 'r
 import {counterReducer} from './counter-reducer';
 import thunk from 'redux-thunk';
 import {useDispatch} from 'react-redux';
+import {loadState, saveState} from '../utils/localStorage-util';
 
 
 
@@ -17,13 +18,16 @@ if(valueAsString){
 
 
 
-export const store = legacy_createStore(rootReducer,persistedState, applyMiddleware(thunk))
+export const store = legacy_createStore(rootReducer,loadState(), applyMiddleware(thunk))
 
 
 
 
 store.subscribe(()=>{
-  localStorage.setItem('app-state', JSON.stringify(store.getState()))
+  saveState({
+    counter : store.getState().counter
+  })
+  // localStorage.setItem('app-state', JSON.stringify(store.getState()))
   // localStorage.setItem('value', JSON.stringify(store.getState().counter.value))
 })
 
