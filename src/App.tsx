@@ -2,7 +2,8 @@ import React, {useEffect} from 'react';
 import './App.css';
 import {useSelector} from 'react-redux';
 import {AppRootReducerType, useAppDispatch} from './bll/store';
-import {insCounterTC, setValueFromLocalStorageAC, setValueFromLocalStorageTC} from './bll/counter-reducer';
+import {insCounterAC} from './bll/counter-reducer';
+
 
 function App() {
 
@@ -10,7 +11,7 @@ function App() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(setValueFromLocalStorageTC())
+    // dispatch(setValueFromLocalStorageTC())
   }, [])
 
 
@@ -18,7 +19,7 @@ function App() {
   //   dispatch(insCounterTC())
   // }
   const onClickHandler = () => {
-    dispatch(insCounterTC(value + 1))
+    dispatch(insCounterAC())
   }
 
 

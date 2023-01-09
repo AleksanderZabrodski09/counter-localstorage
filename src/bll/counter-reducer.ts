@@ -27,19 +27,19 @@ export const setValueFromLocalStorageAC = (value: number) => ({type: 'SET-VALUE-
 //   localStorage.setItem('countValue', JSON.stringify(currentValue + 1))
 //   dispatch(insCounterAC())
 // }
-export const insCounterTC = (value:number) => (dispatch: Dispatch) => {
-  localStorage.setItem('countValue', JSON.stringify(value))
-  dispatch(insCounterAC())
-}
-export const setValueFromLocalStorageTC = () => (dispatch: Dispatch) => {
-
-  let valueAsString = localStorage.getItem('countValue')
-  if (valueAsString) {
-    let newValue = JSON.parse(valueAsString)
-    dispatch(setValueFromLocalStorageAC(newValue))
-  }
-
-}
+// export const insCounterTC = (value:number) => (dispatch: Dispatch) => {
+//   localStorage.setItem('countValue', JSON.stringify(value))
+//   dispatch(insCounterAC())
+// }
+// export const setValueFromLocalStorageTC = () => (dispatch: Dispatch) => {
+//
+//   let valueAsString = localStorage.getItem('countValue')
+//   if (valueAsString) {
+//     let newValue = JSON.parse(valueAsString)
+//     dispatch(setValueFromLocalStorageAC(newValue))
+//   }
+//
+// }
 
 
 type ActionType = ReturnType<typeof insCounterAC> | ReturnType<typeof setValueFromLocalStorageAC>
